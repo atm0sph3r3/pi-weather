@@ -2,4 +2,5 @@ This repo is a Python-based Raspberry Pi project that retrieves the "feels like"
 
 
 Usage:
-python pi.py <zip-code> <WU API key> 
+
+python pi.py ZIP_CODE WU_API_KEY 
