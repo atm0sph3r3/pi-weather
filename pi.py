@@ -6,7 +6,7 @@ import configparser
 
 class Pi(object):
     def __init__(self):
-        self.wunderground_connection = WeatherConnection(sys.argv[1])
+        self.wunderground_connection = WeatherConnection(sys.argv[1], sys.argv[2])
         config = configparser.ConfigParser()
         config.read('config.ini')
         self.temp_range = config['tr']
@@ -15,7 +15,6 @@ class Pi(object):
 
     def output_temperature(self):
         feelslike_temp = int(self.wunderground_connection.get_feelslike_temperature())
-        print("Feels like {temp}".format(temp=feelslike_temp))
         try:
             if feelslike_temp >= self.temp_range.getint('ideal_low') and feelslike_temp <= self.temp_range.getint('ideal_high'):
                 GPIO.output(self.pins.getint('green'), GPIO.HIGH)

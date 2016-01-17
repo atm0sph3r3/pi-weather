@@ -3,12 +3,13 @@ import json
 
 
 class WeatherConnection(object):
-    def __init__(self, api_key):
+    def __init__(self, zip_code, api_key):
+        self.zip = zip_code
         self.api_key = api_key
         self.url = "http://api.wunderground.com"
 
     def get_current_conditions(self):
-        response = requests.get("{baseurl}/api/{key}/conditions/q/21784.json".format(baseurl=self.url, key=self.api_key))
+        response = requests.get("{baseurl}/api/{key}/conditions/q/{zip}.json".format(baseurl=self.url, key=self.api_key, zip=self.zip))
         return response.text
 
     def get_feelslike_temperature(self):
