@@ -2,6 +2,8 @@
 *.iml
 .idea
 
-
 # Ignore maven files
 /target
+
+# Ignore python files
+__pycache__
